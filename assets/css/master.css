@@ -17,10 +17,13 @@ body {
 .main {
   height: 100vh;
   overflow-y: scroll;
+  overflow-x: hidden;
+  background-image: url(../img/bg-space.png);
+  background-size: cover;
+  background-color: black;
 }
 .main .headerTop {
   height: 300vh;
-  background-color: black;
 }
 .main .headerTop .menuTop {
   height: 10vh;
@@ -67,6 +70,7 @@ body {
   height: 10vh;
   padding-top: 1%;
   cursor: pointer;
+  position: fixed;
 }
 .main .headerTop .logo-menu > img {
   width: 100%;
@@ -75,8 +79,8 @@ body {
      object-fit: cover;
 }
 .main .headerTop .KO-menu {
-  position: absolute;
-  right: 0;
+  position: fixed;
+  right: 5%;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -114,8 +118,8 @@ body {
   justify-content: center;
   align-items: center;
   background: transparent;
-  border: 1px solid red;
   position: absolute;
+  transition: 1s;
 }
 .main .headerTop .header-text1 > h2, .main .headerTop .header-text2 > h2 {
   color: white;
@@ -125,6 +129,7 @@ body {
   top: 40vh;
 }
 .main .headerTop .header-text2 {
+  opacity: 0;
   top: 90vh;
 }
 .main .headerTop .header-text2 > h2 {
@@ -132,9 +137,13 @@ body {
 }
 .main .EarthVisual {
   height: 100vh;
+  position: absolute;
+  top: 45%;
+  right: 50%;
 }
 .main .EarthVisual .mainearth {
-  position: absolute;
-  border: 1px solid red;
-  background-color: black;
+  justify-content: center;
+}
+.main .EarthVisual .mainearth > video {
+  width: 200%;
 }/*# sourceMappingURL=master.css.map */

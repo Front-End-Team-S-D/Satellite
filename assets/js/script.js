@@ -29,24 +29,36 @@ window.addEventListener('load', function(){
 
 // ======================= onload header ============================
 
-let header = document.getElementsByClassName('headerTop')[0]
-let headerText1 = document.getElementsByClassName('header-text1')[0]
-let headerText2 = document.getElementsByClassName('header-text2')[0]
-let _main = document.getElementsByTagName('main')[0]
-_main.addEventListener('scroll', function(){
-    let sctopHeader  = _main.scrollTop
-    let heightHeader = header.clientHeight
-    console.log(heightHeader);
-    let headertextTop = headerText1.computedStyleMap().get('top').value
-    headerText1.style.top = headertextTop + sctopHeader/2 + 'px'
-    console.log(sctopHeader);
-    let sctopHeader2 = ((sctopHeader*100)/heightHeader)
-    console.log(sctopHeader2);
-    if(sctopHeader2 >=  '10'){
-        headerText1.style.opacity = '0'
-    }
-    else{
-        headerText1.style.opacity = '1'
-    }
+const _main = document.querySelector('.main')
+const headertext1 = document.querySelector('.header-text1')
+const headertext2 = document.querySelector('.header-text2')
+const headertext1bottom = headertext1.computedStyleMap().get('bottom').value
+const headertext2bottom = headertext2.computedStyleMap().get('bottom').value
+const EarthVisual = document.querySelector('.EarthVisual')
+const vidMainEarth = document.querySelector('.mainearth>video')
+_main.addEventListener('scroll', () => {
+    let sctopheader = _main.scrollTop
+    console.log(sctopheader)
 
+    if (sctopheader >= 500) {
+        headertext1.style.bottom = headertext1bottom + sctopheader/5 + 'px'
+        headertext2.style.bottom = headertext2bottom + sctopheader/10 + 'px'
+        headertext1.style.display = 'none'
+        headertext2.style.opacity = '1'
+        headertext2.style.display = 'flex'
+        if (sctopheader >= 1500) {
+            headertext2.style.bottom = headertext2bottom + sctopheader/5 + 'px'
+            headertext1.style.bottom = headertext1bottom + sctopheader/5 + 'px'
+            headertext2.style.display = 'none'
+            if(sctopheader >= 1600){
+                vidMainEarth.style.width = '100%'
+            }
+        }
+    }
+    else {
+        headertext1.style.bottom = headertext1bottom + sctopheader/10 + 'px'
+        headertext2.style.bottom = headertext2bottom + sctopheader/10 + 'px'
+        headertext1.style.display = 'flex'
+        headertext2.style.display = 'none'
+    }   
 })

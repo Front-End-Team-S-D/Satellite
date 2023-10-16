@@ -10,6 +10,7 @@ li{
 }
 body{
     overflow: hidden;
+    user-select: none;
 }
 .main{
     height: 100vh;
@@ -19,8 +20,11 @@ body{
     background-image: url(../img/bg-space.png);
     background-size: cover;
     background-color: black;
+    display: flex;
+    flex-wrap: wrap;
     .headerTop{
         height: 300vh;
+        position: relative;
         .menuTop{
             // border: 1px solid red;
             height: 10vh;
@@ -71,10 +75,12 @@ body{
             padding-top: 1%;
             cursor: pointer;
             position: fixed;
+            z-index: 999;
             >img {
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
+                object-fit: contain;
+                transform: scale(1.5);
             }
         }
         .KO-menu {
@@ -85,6 +91,7 @@ body{
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 999;
             >a {
                 // border: 1px solid blue;
                 width: 50%;
@@ -122,37 +129,87 @@ body{
             align-items: center;
             background: transparent;
             // border: 1px solid red;
-            position: absolute;
             transition: 1s;
             >h2 {
                 color: white;
                 font-size: 10vw;
             }
         }
-        .header-text1 {
+        .headertext {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 60vh;
+            // position: relative;
+            justify-content: center;
+            position: fixed;
             top: 40vh;
-        }
-        .header-text2 {
-            opacity: 0;
-            >h2 {
-                font-size: 5vw;
+            z-index: 10;
+            .header-text1 {
+                width: 100%;
+                position: absolute;
+                bottom: 40vh;
+                background-color: transparent;
+                // background-color: red;
+                >h2 {
+                    bottom: 30vh;
+                }
             }
-            top: 90vh;
+            .header-text2 {
+                width: 100%;
+                opacity: 0;
+                position: absolute;
+                // background-color: yellow;
+                height: 30vh;
+                bottom: 20vh;
+                >h2 {
+                    font-size: 5vw;
+                }
+            }
         }
     }
     .EarthVisual {
         height: 100vh;
         position: absolute;
-        top: 45%;
+        top: 200%;
         right: 50%;
+        background-color: red;
         .mainearth {
             // border: 1px solid red;
             // display: flex;
-            justify-content: center;
+            position: absolute;
+            justify-content: center;  
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             >video{
                 width: 200%;
             }
         }
+        .sparkle-com {
+            // border: 1px solid red;
+            // display: flex;
+            position: absolute;
+            justify-content: center;
+            display: none;
+            >img{
+                width: 200%;
+            }
+        }
+        .vid-com {
+            // border: 1px solid red;
+            // display: flex;
+            position: absolute;
+            justify-content: center;
+            display: none;
+            >video{
+                width: 200%;
+            }
+        }
+    }
+    .communication {
+        height: 500vh;
+        position: relative;
     }
 
 }

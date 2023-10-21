@@ -8,6 +8,9 @@ li{
     font-family: main;
     src: url(../font/Orbitron/Orbitron-VariableFont_wght.ttf);
 }
+::-webkit-scrollbar {
+    width: 0px;
+} 
 body{
     overflow: hidden;
     user-select: none;
@@ -171,27 +174,28 @@ body{
     .EarthVisual {
         height: 100vh;
         position: absolute;
-        top: 200%;
+        top: 370%;
         right: 50%;
-        background-color: red;
         .mainearth {
             // border: 1px solid red;
             // display: flex;
-            position: absolute;
+            position: relative;
             justify-content: center;  
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 51%;
+            transform: translate(-50%, -90%);
             >video{
                 width: 200%;
             }
         }
         .sparkle-com {
-            // border: 1px solid red;
             // display: flex;
             position: absolute;
             justify-content: center;
-            display: none;
+            opacity: 0;
+            transition: 1s;
+            top: 0;
+            right: 0;
             >img{
                 width: 200%;
             }
@@ -208,8 +212,10 @@ body{
         }
     }
     .communication {
-        height: 500vh;
+        height: 700vh;
+        width: 30%;
         position: relative;
+        // background-color: red;
     }
 
 }

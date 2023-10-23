@@ -30,6 +30,7 @@ window.addEventListener('load', function(){
 // ======================= onload header ============================
 
 const _main = document.querySelector('.main');
+let _100vh = _main.clientHeight
 const headertext1 = document.querySelector('.header-text1');
 const headertext2 = document.querySelector('.header-text2');
 const headertext1bottom = headertext1.computedStyleMap().get('bottom').value;
@@ -46,14 +47,16 @@ const sparkle = document.querySelector('.sparkle-com');
 const imgsparkle = document.querySelector('.sparkle-com>img');
 const imgsparklewidth = imgsparkle.computedStyleMap().get('width').value;
 
-
 let animationFrameId = null;
 let animationStart = null;
 const animationDuration = 500;
 
+let communication = document.querySelector('.communication')
+let comArticle = document.querySelector('.communication article')
 
 _main.addEventListener('scroll', () => {
     let sctopheader = _main.scrollTop;
+    // console.log(sctopheader);
 
     cancelAnimationFrame(animationFrameId);
 
@@ -86,15 +89,29 @@ _main.addEventListener('scroll', () => {
                 EarthVisual.style.top = newTop;
                 EarthVisual.style.right = newRight;
 
+                // communication.style.opacity = '0'
+
                 const newWidthSparkle = imgsparklewidth - progress * (sctopheader / 4000) * 100 + '%';
                 imgsparkle.style.width = newWidthSparkle;
                 // sparkle.style.display = 'none';
                 if (sctopheader >= 3000) {
                     sparkle.style.opacity = '1';
                 }
-
-            } else {
+                else{
+                    sparkle.style.opacity = '0';
+                }
+            } else if(sctopheader < 1500){
                 animationStart = null; 
+                vidMainEarth.style.width = '200%';
+                EarthVisual.style.top = '370%';
+                EarthVisual.style.right = '50%';
+                // communication.style.opacity = '0'
+            }
+            else if(sctopheader > 3900){
+                // communication.style.opacity = '1'
+                comArticle.style.position = 'fixed'
+                comArticle.style.top = _100vh/12 + 'px'
+                comArticle.style.right = '45px'
             }
         } else {
             headertext1.style.bottom = headertext1bottom + sctopheader / 10 + 'px';

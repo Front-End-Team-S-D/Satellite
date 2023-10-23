@@ -34,6 +34,7 @@ body {
 .main .headerTop {
   height: 300vh;
   position: relative;
+  z-index: 1000;
 }
 .main .headerTop .menuTop {
   height: 10vh;
@@ -205,4 +206,27 @@ body {
   height: 700vh;
   width: 30%;
   position: relative;
+  top: 300vh;
+  right: -67vw;
+  transition: 1s;
+}
+.main .communication article {
+  position: absolute;
+  height: 90vh;
+  width: 30vw;
+  top: 0;
+  right: 0;
+}
+.main .communication article > h5 {
+  color: #d8662c;
+}
+.main .communication article h3, .main .communication article p {
+  color: #787777;
+}
+.main .communication article h3 {
+  font-size: 3vw;
+  margin-bottom: 5vh;
+}
+.main .communication article p > strong {
+  font-family: main;
 }/*# sourceMappingURL=master.css.map */

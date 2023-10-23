@@ -28,6 +28,7 @@ body{
     .headerTop{
         height: 300vh;
         position: relative;
+        z-index: 1000;
         .menuTop{
             // border: 1px solid red;
             height: 10vh;
@@ -216,6 +217,30 @@ body{
         width: 30%;
         position: relative;
         // background-color: red;
+        top: 300vh;
+        right: -67vw;
+        // opacity: 0;
+        transition: 1s;
+        article{
+            position: absolute;
+            height: 90vh;
+            width: 30vw;
+            top: 0;right: 0;
+            >h5{
+                color:  #d8662c;
+            }
+            h3,p{
+                color: #787777;
+            }
+            h3{
+                font-size: 3vw;
+                margin-bottom: 5vh;
+            }
+            p{
+                >strong{
+                    font-family: main;
+                }
+            }
+        }
     }
-
 }

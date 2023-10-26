@@ -21,6 +21,18 @@ body {
           user-select: none;
 }
 
+.scroll_section {
+  position: absolute;
+  background-color: transparent !important;
+  z-index: 2000;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+}
+.scroll_section > div {
+  height: 100vh;
+}
+
 .main {
   height: 100vh;
   overflow-y: scroll;
@@ -190,9 +202,20 @@ body {
   transition: 1s;
   top: 0;
   right: 0;
+  animation: rotate 50s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 .main .EarthVisual .sparkle-com > img {
   width: 200%;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .main .EarthVisual .vid-com {
   position: absolute;
@@ -208,6 +231,7 @@ body {
   position: relative;
   top: 300vh;
   right: -67vw;
+  opacity: 0;
   transition: 1s;
 }
 .main .communication article {
@@ -220,13 +244,38 @@ body {
 .main .communication article > h5 {
   color: #d8662c;
 }
-.main .communication article h3, .main .communication article p {
-  color: #787777;
+.main .communication article h3 {
+  font-weight: 300;
+  color: white;
 }
 .main .communication article h3 {
   font-size: 3vw;
   margin-bottom: 5vh;
 }
+.main .communication article p {
+  color: #c6c6c6;
+}
 .main .communication article p > strong {
   font-family: main;
+}
+.main .communication .gallery {
+  position: absolute;
+  height: 70vh;
+  width: 30vw;
+  top: -586vh;
+  right: -120px;
+  opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  transition: 0.5s;
+}
+.main .communication .gallery > figure {
+  width: 70%;
+  height: 160px;
+}
+.main .communication .gallery > figure > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=master.css.map */

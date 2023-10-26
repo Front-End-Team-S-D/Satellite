@@ -29,8 +29,8 @@ window.addEventListener('load', function(){
 
 // ======================= onload header ============================
 
-const _main = document.querySelector('.main');
-let _100vh = _main.clientHeight
+const _scrollsec = document.querySelector('.scroll_section');
+let _100vh = _scrollsec.clientHeight
 const headertext1 = document.querySelector('.header-text1');
 const headertext2 = document.querySelector('.header-text2');
 const headertext1bottom = headertext1.computedStyleMap().get('bottom').value;
@@ -53,9 +53,11 @@ const animationDuration = 500;
 
 let communication = document.querySelector('.communication')
 let comArticle = document.querySelector('.communication article')
+let comArticleright = comArticle.computedStyleMap().get('right').value
+let comGallery = document.querySelector('.communication .gallery')
 
-_main.addEventListener('scroll', () => {
-    let sctopheader = _main.scrollTop;
+_scrollsec.addEventListener('scroll', () => {
+    let sctopheader = _scrollsec.scrollTop;
     // console.log(sctopheader);
 
     cancelAnimationFrame(animationFrameId);
@@ -89,7 +91,7 @@ _main.addEventListener('scroll', () => {
                 EarthVisual.style.top = newTop;
                 EarthVisual.style.right = newRight;
 
-                // communication.style.opacity = '0'
+                communication.style.opacity = '0'
 
                 const newWidthSparkle = imgsparklewidth - progress * (sctopheader / 4000) * 100 + '%';
                 imgsparkle.style.width = newWidthSparkle;
@@ -105,13 +107,25 @@ _main.addEventListener('scroll', () => {
                 vidMainEarth.style.width = '200%';
                 EarthVisual.style.top = '370%';
                 EarthVisual.style.right = '50%';
-                // communication.style.opacity = '0'
             }
             else if(sctopheader > 3900){
-                // communication.style.opacity = '1'
+                communication.style.opacity = '1'
                 comArticle.style.position = 'fixed'
-                comArticle.style.top = _100vh/12 + 'px'
-                comArticle.style.right = '45px'
+                comArticle.style.top = _100vh/8 + 'px'
+                comArticle.style.right = '75px'
+                if(sctopheader > 6000 && sctopheader < 8800) {
+                    comArticle.style.right = -520 + sctopheader/10 + 'px'
+                    console.log('sctopheader : ' + sctopheader)
+                    comGallery.style.opacity = '0';
+                    vidMainEarth.style.width = vidMainEarthwidth - (sctopheader / 5766) * 100 + '%';
+                    EarthVisual.style.right = 136 - (sctopheader / 66) + '%';
+                    console.log(EarthVisual.style.top)
+                    EarthVisual.style.top = 242 - (sctopheader / 44) + '%';
+                    sparkle.style.opacity = '0';
+                    if (sctopheader > 6500 && sctopheader < 8800) {
+                        comGallery.style.opacity = (sctopheader/8600)
+                    }
+                }
             }
         } else {
             headertext1.style.bottom = headertext1bottom + sctopheader / 10 + 'px';

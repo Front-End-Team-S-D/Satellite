@@ -9,7 +9,7 @@ li{
     src: url(../font/Orbitron/Orbitron-VariableFont_wght.ttf);
 }
 ::-webkit-scrollbar {
-    width: 0px;
+    // width: 0px;
 } 
 body{
     overflow: hidden;
@@ -224,7 +224,10 @@ body{
             // display: flex;
             position: absolute;
             justify-content: center;
-            display: none;
+            // display: none;
+            transition: .5s;
+            top: 0;right: 0;
+            opacity: 0;
             >video{
                 width: 200%;
             }
@@ -280,5 +283,13 @@ body{
                 }
             }
         }
+    }
+    .quality {
+        height: 500vh;
+        width: 100%;
+        position: relative;
+        top: 700vh;
+        right: 0;
+        // opacity: 0;
     }
 }

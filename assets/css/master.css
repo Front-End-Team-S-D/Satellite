@@ -10,10 +10,6 @@ li {
   font-family: main;
   src: url(../font/Orbitron/Orbitron-VariableFont_wght.ttf);
 }
-::-webkit-scrollbar {
-  width: 0px;
-}
-
 body {
   overflow: hidden;
   -webkit-user-select: none;
@@ -220,7 +216,10 @@ body {
 .main .EarthVisual .vid-com {
   position: absolute;
   justify-content: center;
-  display: none;
+  transition: 0.5s;
+  top: 0;
+  right: 0;
+  opacity: 0;
 }
 .main .EarthVisual .vid-com > video {
   width: 200%;
@@ -278,4 +277,11 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.main .quality {
+  height: 500vh;
+  width: 100%;
+  position: relative;
+  top: 700vh;
+  right: 0;
 }/*# sourceMappingURL=master.css.map */

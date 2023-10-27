@@ -55,6 +55,10 @@ let communication = document.querySelector('.communication')
 let comArticle = document.querySelector('.communication article')
 let comArticleright = comArticle.computedStyleMap().get('right').value
 let comGallery = document.querySelector('.communication .gallery')
+let tComGallery = comGallery.computedStyleMap().get('top').value
+
+let vidCom = document.querySelector('.vid-com')
+let vidComVideo = document.querySelector('.vid-com video')
 
 _scrollsec.addEventListener('scroll', () => {
     let sctopheader = _scrollsec.scrollTop;
@@ -69,7 +73,7 @@ _scrollsec.addEventListener('scroll', () => {
             headertext1.style.display = 'none';
             headertext2.style.opacity = '1';
             headertext2.style.display = 'flex';
-
+            
             if (sctopheader >= 1500) {
                 headertext2.style.bottom = headertext2bottom + sctopheader / 5 + 'px';
                 headertext1.style.bottom = headertext1bottom + sctopheader / 5 + 'px';
@@ -80,16 +84,21 @@ _scrollsec.addEventListener('scroll', () => {
                 if (!animationStart) {
                     animationStart = Date.now();
                 }
-
+                
                 const currentTime = Date.now();
                 const progress = Math.min(1, (currentTime - animationStart) / animationDuration);
-
+                
                 const newWidth = vidMainEarthwidth - progress * (sctopheader / 4000) * 100 + '%';
                 const newTop = EarthVisualtop - progress * (sctopheader / 15.5) + '%';
                 const newRight = EarthVisualright - progress * (sctopheader / 6000) + '%';
                 vidMainEarth.style.width = newWidth;
                 EarthVisual.style.top = newTop;
                 EarthVisual.style.right = newRight;
+
+                vidCom.style.width = '60%';
+                vidComVideo.style.width = '100%';
+                vidCom.style.top = '-55%';
+                vidCom.style.right = '45%';
 
                 communication.style.opacity = '0'
 
@@ -113,6 +122,7 @@ _scrollsec.addEventListener('scroll', () => {
                 comArticle.style.position = 'fixed'
                 comArticle.style.top = _100vh/8 + 'px'
                 comArticle.style.right = '75px'
+
                 if(sctopheader > 6000 && sctopheader < 8800) {
                     comArticle.style.right = -520 + sctopheader/10 + 'px'
                     console.log('sctopheader : ' + sctopheader)
@@ -124,6 +134,51 @@ _scrollsec.addEventListener('scroll', () => {
                     sparkle.style.opacity = '0';
                     if (sctopheader > 6500 && sctopheader < 8800) {
                         comGallery.style.opacity = (sctopheader/8600)
+                        if(sctopheader > 8700 && sctopheader < 8800){
+                            comArticle.style.right = '360px'
+                            comArticle.style.top = '85px'
+                        }
+                    }
+                }
+                else if(sctopheader >= 8800){
+                    comArticle.style.right = '360px'
+                    comArticle.style.top = '85px'
+                    if(sctopheader > 8900){
+                        vidCom.style.opacity += (sctopheader*2)/25000 
+                        vidCom.style.zIndex = 100
+                        if(sctopheader > 9500){
+                            comGallery.style.top = tComGallery - (sctopheader/100) + 'px'
+                            if(sctopheader > 10000){
+                                comGallery.style.opacity = 1 - (sctopheader/9000)
+                                if(sctopheader > 10500){
+                                    comArticle.style.opacity = 1 - (sctopheader/12000)
+                                    vidCom.style.opacity = 1 - (sctopheader/12700)
+                                    let wVidMainEarth = vidMainEarth.computedStyleMap().get('width').value
+                                    if(sctopheader > 11000 && sctopheader < 12000){
+                                        vidMainEarth.style.width = wVidMainEarth - (sctopheader/30000) + '%';
+                                    }
+                                    else if(sctopheader >= 12000){
+                                        vidMainEarth.style.width = wVidMainEarth + '%';
+                                    }
+                                    else{
+                                        // back error******************
+                                        vidMainEarth.style.width = '47.5%';
+                                    }
+                                }
+                                else{
+                                    comArticle.style.opacity = 0 + (sctopheader/12500)
+                                }
+                            }
+                            else{
+                                comGallery.style.opacity = 0 + (sctopheader/9000)
+                            }
+                        }
+                        else{
+                            comGallery.style.top = tComGallery + 'px'
+                        }
+                    }
+                    else{
+                        vidCom.style.opacity = 0
                     }
                 }
             }
@@ -131,7 +186,7 @@ _scrollsec.addEventListener('scroll', () => {
             headertext1.style.bottom = headertext1bottom + sctopheader / 10 + 'px';
             headertext2.style.bottom = headertext2bottom + sctopheader / 10 + 'px';
             headertext1.style.display = 'flex';
-            headertext2.style.display = 'none';
+            headertext2.style.display = 'none';          
         }
     });
 });

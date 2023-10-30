@@ -38,6 +38,8 @@ const headertext2bottom = headertext2.computedStyleMap().get('bottom').value;
 
 const EarthVisual = document.querySelector('.EarthVisual');
 const vidMainEarth = document.querySelector('.mainearth>video');
+let wVidMainEarth = vidMainEarth.computedStyleMap().get('width').value
+
 const MainEarth = document.querySelector('.mainearth');
 const vidMainEarthwidth = vidMainEarth.computedStyleMap().get('width').value;
 const EarthVisualtop = EarthVisual.computedStyleMap().get('top').value;
@@ -60,6 +62,9 @@ let tComGallery = comGallery.computedStyleMap().get('top').value
 let vidCom = document.querySelector('.vid-com')
 let vidComVideo = document.querySelector('.vid-com video')
 
+let quality = document.getElementsByClassName('quality')[0]
+let tQuality = quality.computedStyleMap().get('top').value
+
 _scrollsec.addEventListener('scroll', () => {
     let sctopheader = _scrollsec.scrollTop;
     // console.log(sctopheader);
@@ -79,7 +84,7 @@ _scrollsec.addEventListener('scroll', () => {
                 headertext1.style.bottom = headertext1bottom + sctopheader / 5 + 'px';
                 headertext2.style.display = 'none';
             }
-
+            
             if (sctopheader >= 1500 && sctopheader < 4000) {
                 if (!animationStart) {
                     animationStart = Date.now();
@@ -94,7 +99,7 @@ _scrollsec.addEventListener('scroll', () => {
                 vidMainEarth.style.width = newWidth;
                 EarthVisual.style.top = newTop;
                 EarthVisual.style.right = newRight;
-
+                
                 vidCom.style.width = '60%';
                 vidComVideo.style.width = '100%';
                 vidCom.style.top = '-55%';
@@ -150,19 +155,27 @@ _scrollsec.addEventListener('scroll', () => {
                             comGallery.style.top = tComGallery - (sctopheader/100) + 'px'
                             if(sctopheader > 10000){
                                 comGallery.style.opacity = 1 - (sctopheader/9000)
+                                vidCom.style.opacity = 1 - (sctopheader/13000)
                                 if(sctopheader > 10500){
                                     comArticle.style.opacity = 1 - (sctopheader/12000)
-                                    vidCom.style.opacity = 1 - (sctopheader/12700)
-                                    let wVidMainEarth = vidMainEarth.computedStyleMap().get('width').value
-                                    if(sctopheader > 11000 && sctopheader < 12000){
-                                        vidMainEarth.style.width = wVidMainEarth - (sctopheader/30000) + '%';
-                                    }
-                                    else if(sctopheader >= 12000){
-                                        vidMainEarth.style.width = wVidMainEarth + '%';
+                                    if(sctopheader > 11000){
+                                        vidMainEarth.style.width = '30%';
+                                        vidMainEarth.style.position = 'fixed'
+                                        vidMainEarth.style.transition = '4s'
+                                        vidMainEarth.style.transform = 'translate(55%, 25%)'
+                                        quality.style.top = tQuality - sctopheader/25 + 'px'
+                                        quality.style.opacity = sctopheader/20000
+                                        if(quality.style.top <= (_100vh*.6 + 'px')){
+                                            quality.style.top = _100vh*.6 + 'px'
+                                        }
                                     }
                                     else{
-                                        // back error******************
+                                        quality.style.opacity = 0
                                         vidMainEarth.style.width = '47.5%';
+                                        vidMainEarth.style.position = 'relative'
+                                        vidMainEarth.style.transform = 'translate(0%, 0%)'
+                                        vidMainEarth.style.transition = '0s'
+                                        quality.style.top = tQuality - 'px'
                                     }
                                 }
                                 else{
